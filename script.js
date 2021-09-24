@@ -3,6 +3,7 @@ let select;
 let drawConstructionLines;
 let drawConstructionPoints;
 let drawControlPoints;
+let hideUI;
 let p0, p1, p2, p3;
 let color0, color1, color2, color3;
 let move0WithMouse;
@@ -51,6 +52,7 @@ function drawQuadraticBezierCurve(t) {
     noFill();
     strokeWeight(2);
     stroke(65);
+
     if (drawControlPoints.checked()) {
         line(p0.x, p0.y, p1.x, p1.y);
         line(p1.x, p1.y, p2.x, p2.y);
@@ -131,6 +133,8 @@ function drawQuadraticBezierCurve(t) {
 }
 
 function drawCubicBezierCurve(t) {
+    noFill();
+
     if (drawControlPoints.checked()) {
         strokeWeight(2);
         stroke(80);
@@ -290,37 +294,35 @@ function setup() {
     previousWidth = windowWidth;
     previousHeight = windowHeight;
 
-    // colorMode(HSL, 255, 255, 255);
-
     p0 = createVector(windowWidth / 5, windowHeight / 4);
     p1 = createVector(windowWidth * 2 / 5, windowHeight * 3 / 5);
     p2 = createVector(windowWidth * 5 / 6, windowHeight / 5);
     p3 = createVector(windowWidth * 4 / 5, windowHeight * 3 / 4)
 
     color0 = createVector(0, 123, 255);
-    // color0 = createVector(map(211, 0, 359, 0, 255), map(100, 0, 100, 0, 255), map(50, 0, 100, 0, 255));
     color1 = createVector(40, 167, 69);
-    // color1 = createVector(map(134, 0, 359, 0, 255), map(61, 0, 100, 0, 255), map(41, 0, 100, 0, 255));
     color2 = createVector(220, 53, 69);
-    // color2 = createVector(map(354, 0, 359, 0, 255), map(70, 0, 100, 0, 255), map(54, 0, 100, 0, 255));
     color3 = createVector(255, 193, 7);
 
     slider = createSlider(0, 1, 0, 0.001);
-    slider.position(20, 20);
+    slider.position(20, 50);
 
     select = createSelect();
-    select.position(20, 50);
+    select.position(20, 80);
     select.option("Quadratic");
     select.option("Cubic");
     select.selected("Quadratic");
     select.changed(changeFunction);
 
     drawConstructionLines = createCheckbox(" Draw Construction Lines", true);
-    drawConstructionLines.position(20, 80);
+    drawConstructionLines.position(20, 110);
     drawConstructionPoints = createCheckbox(" Draw Construction Points", true);
-    drawConstructionPoints.position(20, 110);
+    drawConstructionPoints.position(20, 140);
     drawControlPoints = createCheckbox(" Draw Control Points", true);
-    drawControlPoints.position(20, 140);
+    drawControlPoints.position(20, 180);
+
+    hideUI = createCheckbox(" Hide UI", false);
+    hideUI.position(20, 20);
     
     drawQuadratic = true;
 
@@ -332,6 +334,20 @@ function setup() {
 
 function draw() {
     background(54);
+
+    if (hideUI.checked()) {
+        slider.hide();
+        select.hide();
+        drawConstructionLines.hide();
+        drawConstructionPoints.hide();
+        drawControlPoints.hide();
+    } else {
+        slider.show();
+        select.show();
+        drawConstructionLines.show();
+        drawConstructionPoints.show();
+        drawControlPoints.show();
+    }
 
     let t = slider.value();
 
