@@ -319,7 +319,7 @@ function setup() {
     drawConstructionPoints = createCheckbox(" Draw Construction Points", true);
     drawConstructionPoints.position(20, 140);
     drawControlPoints = createCheckbox(" Draw Control Points", true);
-    drawControlPoints.position(20, 180);
+    drawControlPoints.position(20, 170);
 
     hideUI = createCheckbox(" Hide UI", false);
     hideUI.position(20, 20);
