@@ -352,17 +352,33 @@ function draw() {
     let t = slider.value();
 
     if (move0WithMouse) {
-        p0.x = mouseX;
-        p0.y = mouseY;
+        if (mouseX >= 0 && mouseX <= windowWidth) {
+            p0.x = mouseX;
+        }
+        if (mouseY >= 0 && mouseY <= windowHeight) {
+            p0.y = mouseY;
+        }
     } else if (move1WithMouse) {
-        p2.x = mouseX;
-        p2.y = mouseY;
+        if (mouseX >= 0 && mouseX <= windowWidth) {
+            p2.x = mouseX;
+        }
+        if (mouseY >= 0 && mouseY <= windowHeight) {
+            p2.y = mouseY;
+        }
     } else if (moveControl0WithMouse) {
-        p1.x = mouseX;
-        p1.y = mouseY;
+        if (mouseX >= 0 && mouseX <= windowWidth) {
+            p1.x = mouseX;
+        }
+        if (mouseY >= 0 && mouseY <= windowHeight) {
+            p1.y = mouseY;
+        }
     } else if (moveControl1WithMouse) {
-        p3.x = mouseX;
-        p3.y = mouseY;
+        if (mouseX >= 0 && mouseX <= windowWidth) {
+            p3.x = mouseX;
+        }
+        if (mouseY >= 0 && mouseY <= windowHeight) {
+            p3.y = mouseY;
+        }
     }
     
     if (drawQuadratic) {
