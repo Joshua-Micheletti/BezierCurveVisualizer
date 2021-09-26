@@ -377,12 +377,14 @@ function draw() {
         drawConstructionLines.hide();
         drawConstructionPoints.hide();
         drawControlPoints.hide();
+        oklabCheck.hide();
     } else {
         slider.show();
         select.show();
         drawConstructionLines.show();
         drawConstructionPoints.show();
         drawControlPoints.show();
+        oklabCheck.show();
     }
 
     let t = slider.value();
