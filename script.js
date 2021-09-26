@@ -50,15 +50,8 @@ function mouseReleased() {
 }
 
 function setColor(color) {
-    if (colorSpace.value() == "OkLab") {
-        var tmpColor = culori.rgb({mode: "oklab",
-                                   l: color.x,
-                                   a: color.y,
-                                   b: color.z});
-        tmpColor.r = map(tmpColor.r, 0, 1, 0, 255);
-        tmpColor.g = map(tmpColor.g, 0, 1, 0, 255);
-        tmpColor.b = map(tmpColor.b, 0, 1, 0, 255);
-        stroke(tmpColor.r, tmpColor.g, tmpColor.b);
+    if (colorSpace.value() == "RGB") {
+        stroke(color.x, color.y, color.z);
 
     } else if (colorSpace.value() == "LRGB") {
         var tmpColor = culori.rgb({mode: "lrgb",
@@ -189,9 +182,127 @@ function setColor(color) {
         tmpColor.g = map(tmpColor.g, 0, 1, 0, 255);
         tmpColor.b = map(tmpColor.b, 0, 1, 0, 255);
         stroke(tmpColor.r, tmpColor.g, tmpColor.b);
+
+    } else if (colorSpace.value() == "LUV") {
+        var tmpColor = culori.rgb({mode: "luv",
+                                   l: color.x,
+                                   u: color.y,
+                                   v: color.z});
+        tmpColor.r = map(tmpColor.r, 0, 1, 0, 255);
+        tmpColor.g = map(tmpColor.g, 0, 1, 0, 255);
+        tmpColor.b = map(tmpColor.b, 0, 1, 0, 255);
+        stroke(tmpColor.r, tmpColor.g, tmpColor.b);
+
+    } else if (colorSpace.value() == "LCHUV") {
+        var tmpColor = culori.rgb({mode: "lchuv",
+                                   l: color.x,
+                                   c: color.y,
+                                   h: color.z});
+        tmpColor.r = map(tmpColor.r, 0, 1, 0, 255);
+        tmpColor.g = map(tmpColor.g, 0, 1, 0, 255);
+        tmpColor.b = map(tmpColor.b, 0, 1, 0, 255);
+        stroke(tmpColor.r, tmpColor.g, tmpColor.b);
     
-    } else if (colorSpace.value() == "RGB") {
-        stroke(color.x, color.y, color.z);
+    } else if (colorSpace.value() == "DLAB") {
+        var tmpColor = culori.rgb({mode: "dlab",
+                                   l: color.x,
+                                   a: color.y,
+                                   b: color.z});
+        tmpColor.r = map(tmpColor.r, 0, 1, 0, 255);
+        tmpColor.g = map(tmpColor.g, 0, 1, 0, 255);
+        tmpColor.b = map(tmpColor.b, 0, 1, 0, 255);
+        stroke(tmpColor.r, tmpColor.g, tmpColor.b);
+    
+    } else if (colorSpace.value() == "DLCH") {
+        var tmpColor = culori.rgb({mode: "dlch",
+                                   l: color.x,
+                                   c: color.y,
+                                   h: color.z});
+        tmpColor.r = map(tmpColor.r, 0, 1, 0, 255);
+        tmpColor.g = map(tmpColor.g, 0, 1, 0, 255);
+        tmpColor.b = map(tmpColor.b, 0, 1, 0, 255);
+        stroke(tmpColor.r, tmpColor.g, tmpColor.b);
+    
+    } else if (colorSpace.value() == "OkLab") {
+        var tmpColor = culori.rgb({mode: "oklab",
+                                   l: color.x,
+                                   a: color.y,
+                                   b: color.z});
+        tmpColor.r = map(tmpColor.r, 0, 1, 0, 255);
+        tmpColor.g = map(tmpColor.g, 0, 1, 0, 255);
+        tmpColor.b = map(tmpColor.b, 0, 1, 0, 255);
+        stroke(tmpColor.r, tmpColor.g, tmpColor.b);
+
+    } else if (colorSpace.value() == "OkLch") {
+        var tmpColor = culori.rgb({mode: "oklch",
+                                   l: color.x,
+                                   c: color.y,
+                                   h: color.z});
+        tmpColor.r = map(tmpColor.r, 0, 1, 0, 255);
+        tmpColor.g = map(tmpColor.g, 0, 1, 0, 255);
+        tmpColor.b = map(tmpColor.b, 0, 1, 0, 255);
+        stroke(tmpColor.r, tmpColor.g, tmpColor.b);
+    
+    } else if (colorSpace.value() == "JAB") {
+        var tmpColor = culori.rgb({mode: "jab",
+                                   j: color.x,
+                                   a: color.y,
+                                   b: color.z});
+        tmpColor.r = map(tmpColor.r, 0, 1, 0, 255);
+        tmpColor.g = map(tmpColor.g, 0, 1, 0, 255);
+        tmpColor.b = map(tmpColor.b, 0, 1, 0, 255);
+        stroke(tmpColor.r, tmpColor.g, tmpColor.b);
+    
+    } else if (colorSpace.value() == "JCH") {
+        var tmpColor = culori.rgb({mode: "jch",
+                                   j: color.x,
+                                   c: color.y,
+                                   h: color.z});
+        tmpColor.r = map(tmpColor.r, 0, 1, 0, 255);
+        tmpColor.g = map(tmpColor.g, 0, 1, 0, 255);
+        tmpColor.b = map(tmpColor.b, 0, 1, 0, 255);
+        stroke(tmpColor.r, tmpColor.g, tmpColor.b);
+    
+    } else if (colorSpace.value() == "YIQ") {
+        var tmpColor = culori.rgb({mode: "yiq",
+                                   y: color.x,
+                                   i: color.y,
+                                   q: color.z});
+        tmpColor.r = map(tmpColor.r, 0, 1, 0, 255);
+        tmpColor.g = map(tmpColor.g, 0, 1, 0, 255);
+        tmpColor.b = map(tmpColor.b, 0, 1, 0, 255);
+        stroke(tmpColor.r, tmpColor.g, tmpColor.b);
+    
+    } else if (colorSpace.value() == "XYZ") {
+        var tmpColor = culori.rgb({mode: "xyz",
+                                   x: color.x,
+                                   y: color.y,
+                                   z: color.z});
+        tmpColor.r = map(tmpColor.r, 0, 1, 0, 255);
+        tmpColor.g = map(tmpColor.g, 0, 1, 0, 255);
+        tmpColor.b = map(tmpColor.b, 0, 1, 0, 255);
+        stroke(tmpColor.r, tmpColor.g, tmpColor.b);
+    
+    } else if (colorSpace.value() == "XYZ65") {
+        var tmpColor = culori.rgb({mode: "xyz65",
+                                   x: color.x,
+                                   y: color.y,
+                                   z: color.z});
+        tmpColor.r = map(tmpColor.r, 0, 1, 0, 255);
+        tmpColor.g = map(tmpColor.g, 0, 1, 0, 255);
+        tmpColor.b = map(tmpColor.b, 0, 1, 0, 255);
+        stroke(tmpColor.r, tmpColor.g, tmpColor.b);
+    
+    } else if (colorSpace.value() == "CubeHelix") {
+        var tmpColor = culori.rgb({mode: "cubehelix",
+                                   h: color.x,
+                                   s: color.y,
+                                   l: color.z});
+        tmpColor.r = map(tmpColor.r, 0, 1, 0, 255);
+        tmpColor.g = map(tmpColor.g, 0, 1, 0, 255);
+        tmpColor.b = map(tmpColor.b, 0, 1, 0, 255);
+        stroke(tmpColor.r, tmpColor.g, tmpColor.b);
+    
     }
 }
 
@@ -468,7 +579,18 @@ function setup() {
     colorSpace.option("LCH");
     colorSpace.option("LAB65");
     colorSpace.option("LCH65");
+    colorSpace.option("LUV");
+    colorSpace.option("LCHUV");
+    colorSpace.option("DLAB");
+    colorSpace.option("DLCH");
     colorSpace.option("OkLab");
+    colorSpace.option("OkLch");
+    colorSpace.option("JAB");
+    colorSpace.option("JCH");
+    colorSpace.option("YIQ");
+    colorSpace.option("XYZ");
+    colorSpace.option("XYZ65");
+    colorSpace.option("CubeHelix");
     colorSpace.selected("RGB");
 
     slider = createSlider(0, 1, 0, 0.001);
@@ -639,6 +761,46 @@ function draw() {
         color3tmp = culori.lch65("#FFC107");
         color3 = createVector(color3tmp.l, color3tmp.c, color3tmp.h); 
         
+    } else if (colorSpace.value() == "LUV") {
+        color0tmp = culori.luv("#007BFF");
+        color0 = createVector(color0tmp.l, color0tmp.u, color0tmp.v);
+        color1tmp = culori.luv("#28A745");
+        color1 = createVector(color1tmp.l, color1tmp.u, color1tmp.v);
+        color2tmp = culori.luv("#DC3545");
+        color2 = createVector(color2tmp.l, color2tmp.u, color2tmp.v);
+        color3tmp = culori.luv("#FFC107");
+        color3 = createVector(color3tmp.l, color3tmp.u, color3tmp.v); 
+        
+    } else if (colorSpace.value() == "LCHUV") {
+        color0tmp = culori.lchuv("#007BFF");
+        color0 = createVector(color0tmp.l, color0tmp.c, color0tmp.h);
+        color1tmp = culori.lchuv("#28A745");
+        color1 = createVector(color1tmp.l, color1tmp.c, color1tmp.h);
+        color2tmp = culori.lchuv("#DC3545");
+        color2 = createVector(color2tmp.l, color2tmp.c, color2tmp.h);
+        color3tmp = culori.lchuv("#FFC107");
+        color3 = createVector(color3tmp.l, color3tmp.c, color3tmp.h); 
+        
+    } else if (colorSpace.value() == "DLAB") {
+        color0tmp = culori.dlab("#007BFF");
+        color0 = createVector(color0tmp.l, color0tmp.a, color0tmp.b);
+        color1tmp = culori.dlab("#28A745");
+        color1 = createVector(color1tmp.l, color1tmp.a, color1tmp.b);
+        color2tmp = culori.dlab("#DC3545");
+        color2 = createVector(color2tmp.l, color2tmp.a, color2tmp.b);
+        color3tmp = culori.dlab("#FFC107");
+        color3 = createVector(color3tmp.l, color3tmp.a, color3tmp.b); 
+
+    } else if (colorSpace.value() == "DLCH") {
+        color0tmp = culori.dlch("#007BFF");
+        color0 = createVector(color0tmp.l, color0tmp.c, color0tmp.h);
+        color1tmp = culori.dlch("#28A745");
+        color1 = createVector(color1tmp.l, color1tmp.c, color1tmp.h);
+        color2tmp = culori.dlch("#DC3545");
+        color2 = createVector(color2tmp.l, color2tmp.c, color2tmp.h);
+        color3tmp = culori.dlch("#FFC107");
+        color3 = createVector(color3tmp.l, color3tmp.c, color3tmp.h); 
+
     } else if (colorSpace.value() == "OkLab") {
         color0tmp = culori.oklab("#007BFF");
         color0 = createVector(color0tmp.l, color0tmp.a, color0tmp.b);
@@ -649,7 +811,78 @@ function draw() {
         color3tmp = culori.oklab("#FFC107");
         color3 = createVector(color3tmp.l, color3tmp.a, color3tmp.b);
 
+    } else if (colorSpace.value() == "OkLch") {
+        color0tmp = culori.oklch("#007BFF");
+        color0 = createVector(color0tmp.l, color0tmp.c, color0tmp.h);
+        color1tmp = culori.oklch("#28A745");
+        color1 = createVector(color1tmp.l, color1tmp.c, color1tmp.h);
+        color2tmp = culori.oklch("#DC3545");
+        color2 = createVector(color2tmp.l, color2tmp.c, color2tmp.h);
+        color3tmp = culori.oklch("#FFC107");
+        color3 = createVector(color3tmp.l, color3tmp.c, color3tmp.h);
+
+    } else if (colorSpace.value() == "JAB") {
+        color0tmp = culori.jab("#007BFF");
+        color0 = createVector(color0tmp.j, color0tmp.a, color0tmp.b);
+        color1tmp = culori.jab("#28A745");
+        color1 = createVector(color1tmp.j, color1tmp.a, color1tmp.b);
+        color2tmp = culori.jab("#DC3545");
+        color2 = createVector(color2tmp.j, color2tmp.a, color2tmp.b);
+        color3tmp = culori.jab("#FFC107");
+        color3 = createVector(color3tmp.j, color3tmp.a, color3tmp.b);
+
+    } else if (colorSpace.value() == "JCH") {
+        color0tmp = culori.jch("#007BFF");
+        color0 = createVector(color0tmp.j, color0tmp.c, color0tmp.h);
+        color1tmp = culori.jch("#28A745");
+        color1 = createVector(color1tmp.j, color1tmp.c, color1tmp.h);
+        color2tmp = culori.jch("#DC3545");
+        color2 = createVector(color2tmp.j, color2tmp.c, color2tmp.h);
+        color3tmp = culori.jch("#FFC107");
+        color3 = createVector(color3tmp.j, color3tmp.c, color3tmp.h);
+
+    } else if (colorSpace.value() == "YIQ") {
+        color0tmp = culori.yiq("#007BFF");
+        color0 = createVector(color0tmp.y, color0tmp.i, color0tmp.q);
+        color1tmp = culori.yiq("#28A745");
+        color1 = createVector(color1tmp.y, color1tmp.i, color1tmp.q);
+        color2tmp = culori.yiq("#DC3545");
+        color2 = createVector(color2tmp.y, color2tmp.i, color2tmp.q);
+        color3tmp = culori.yiq("#FFC107");
+        color3 = createVector(color3tmp.y, color3tmp.i, color3tmp.q);
+
+    } else if (colorSpace.value() == "XYZ") {
+        color0tmp = culori.xyz("#007BFF");
+        color0 = createVector(color0tmp.x, color0tmp.y, color0tmp.z);
+        color1tmp = culori.xyz("#28A745");
+        color1 = createVector(color1tmp.x, color1tmp.y, color1tmp.z);
+        color2tmp = culori.xyz("#DC3545");
+        color2 = createVector(color2tmp.x, color2tmp.y, color2tmp.z);
+        color3tmp = culori.xyz("#FFC107");
+        color3 = createVector(color3tmp.x, color3tmp.y, color3tmp.z);
+
+    } else if (colorSpace.value() == "XYZ65") {
+        color0tmp = culori.xyz65("#007BFF");
+        color0 = createVector(color0tmp.x, color0tmp.y, color0tmp.z);
+        color1tmp = culori.xyz65("#28A745");
+        color1 = createVector(color1tmp.x, color1tmp.y, color1tmp.z);
+        color2tmp = culori.xyz65("#DC3545");
+        color2 = createVector(color2tmp.x, color2tmp.y, color2tmp.z);
+        color3tmp = culori.xyz65("#FFC107");
+        color3 = createVector(color3tmp.x, color3tmp.y, color3tmp.z);
+
+    } else if (colorSpace.value() == "CubeHelix") {
+        color0tmp = culori.cubehelix("#007BFF");
+        color0 = createVector(color0tmp.h, color0tmp.s, color0tmp.l);
+        color1tmp = culori.cubehelix("#28A745");
+        color1 = createVector(color1tmp.h, color1tmp.s, color1tmp.l);
+        color2tmp = culori.cubehelix("#DC3545");
+        color2 = createVector(color2tmp.h, color2tmp.s, color2tmp.l);
+        color3tmp = culori.cubehelix("#FFC107");
+        color3 = createVector(color3tmp.h, color3tmp.s, color3tmp.l);
+
     }
+    
 
     if (hideUI.checked()) {
         slider.hide();
