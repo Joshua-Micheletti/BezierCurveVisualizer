@@ -4,7 +4,7 @@ let drawConstructionLines;
 let drawConstructionPoints;
 let drawControlPoints;
 let hideUI;
-let oklabCheck;
+let colorSpace;
 let p0, p1, p2, p3;
 let color0, color1, color2, color3;
 let move0WithMouse;
@@ -50,7 +50,7 @@ function mouseReleased() {
 }
 
 function setColor(color) {
-    if (oklabCheck.checked()) {
+    if (colorSpace.value() == "OkLab") {
         var tmpColor = culori.rgb({mode: "oklab",
                                    l: color.x,
                                    a: color.y,
@@ -59,7 +59,138 @@ function setColor(color) {
         tmpColor.g = map(tmpColor.g, 0, 1, 0, 255);
         tmpColor.b = map(tmpColor.b, 0, 1, 0, 255);
         stroke(tmpColor.r, tmpColor.g, tmpColor.b);
-    } else {
+
+    } else if (colorSpace.value() == "LRGB") {
+        var tmpColor = culori.rgb({mode: "lrgb",
+                                   r: color.x,
+                                   g: color.y,
+                                   b: color.z});
+        tmpColor.r = map(tmpColor.r, 0, 1, 0, 255);
+        tmpColor.g = map(tmpColor.g, 0, 1, 0, 255);
+        tmpColor.b = map(tmpColor.b, 0, 1, 0, 255);
+        stroke(tmpColor.r, tmpColor.g, tmpColor.b);
+
+    } else if (colorSpace.value() == "A98") {
+        var tmpColor = culori.rgb({mode: "a98",
+                                   r: color.x,
+                                   g: color.y,
+                                   b: color.z});
+        tmpColor.r = map(tmpColor.r, 0, 1, 0, 255);
+        tmpColor.g = map(tmpColor.g, 0, 1, 0, 255);
+        tmpColor.b = map(tmpColor.b, 0, 1, 0, 255);
+        stroke(tmpColor.r, tmpColor.g, tmpColor.b);
+
+    } else if (colorSpace.value() == "P3") {
+        var tmpColor = culori.rgb({mode: "p3",
+                                   r: color.x,
+                                   g: color.y,
+                                   b: color.z});
+        tmpColor.r = map(tmpColor.r, 0, 1, 0, 255);
+        tmpColor.g = map(tmpColor.g, 0, 1, 0, 255);
+        tmpColor.b = map(tmpColor.b, 0, 1, 0, 255);
+        stroke(tmpColor.r, tmpColor.g, tmpColor.b);
+
+    } else if (colorSpace.value() == "ProPhoto") {
+        var tmpColor = culori.rgb({mode: "prophoto",
+                                   r: color.x,
+                                   g: color.y,
+                                   b: color.z});
+        tmpColor.r = map(tmpColor.r, 0, 1, 0, 255);
+        tmpColor.g = map(tmpColor.g, 0, 1, 0, 255);
+        tmpColor.b = map(tmpColor.b, 0, 1, 0, 255);
+        stroke(tmpColor.r, tmpColor.g, tmpColor.b);
+ 
+    } else if (colorSpace.value() == "REC2020") {
+        var tmpColor = culori.rgb({mode: "rec2020",
+                                   r: color.x,
+                                   g: color.y,
+                                   b: color.z});
+        tmpColor.r = map(tmpColor.r, 0, 1, 0, 255);
+        tmpColor.g = map(tmpColor.g, 0, 1, 0, 255);
+        tmpColor.b = map(tmpColor.b, 0, 1, 0, 255);
+        stroke(tmpColor.r, tmpColor.g, tmpColor.b);
+
+    } else if (colorSpace.value() == "HSL") {
+        var tmpColor = culori.rgb({mode: "hsl",
+                                   h: color.x,
+                                   s: color.y,
+                                   l: color.z});
+        tmpColor.r = map(tmpColor.r, 0, 1, 0, 255);
+        tmpColor.g = map(tmpColor.g, 0, 1, 0, 255);
+        tmpColor.b = map(tmpColor.b, 0, 1, 0, 255);
+        stroke(tmpColor.r, tmpColor.g, tmpColor.b);
+    
+    } else if (colorSpace.value() == "HSV") {
+        var tmpColor = culori.rgb({mode: "hsv",
+                                   h: color.x,
+                                   s: color.y,
+                                   v: color.z});
+        tmpColor.r = map(tmpColor.r, 0, 1, 0, 255);
+        tmpColor.g = map(tmpColor.g, 0, 1, 0, 255);
+        tmpColor.b = map(tmpColor.b, 0, 1, 0, 255);
+        stroke(tmpColor.r, tmpColor.g, tmpColor.b);
+    
+    } else if (colorSpace.value() == "HSI") {
+        var tmpColor = culori.rgb({mode: "hsi",
+                                   h: color.x,
+                                   s: color.y,
+                                   i: color.z});
+        tmpColor.r = map(tmpColor.r, 0, 1, 0, 255);
+        tmpColor.g = map(tmpColor.g, 0, 1, 0, 255);
+        tmpColor.b = map(tmpColor.b, 0, 1, 0, 255);
+        stroke(tmpColor.r, tmpColor.g, tmpColor.b);
+    
+    } else if (colorSpace.value() == "HWB") {
+        var tmpColor = culori.rgb({mode: "hwb",
+                                   h: color.x,
+                                   w: color.y,
+                                   b: color.z});
+        tmpColor.r = map(tmpColor.r, 0, 1, 0, 255);
+        tmpColor.g = map(tmpColor.g, 0, 1, 0, 255);
+        tmpColor.b = map(tmpColor.b, 0, 1, 0, 255);
+        stroke(tmpColor.r, tmpColor.g, tmpColor.b);
+    
+    } else if (colorSpace.value() == "LAB") {
+        var tmpColor = culori.rgb({mode: "lab",
+                                   l: color.x,
+                                   a: color.y,
+                                   b: color.z});
+        tmpColor.r = map(tmpColor.r, 0, 1, 0, 255);
+        tmpColor.g = map(tmpColor.g, 0, 1, 0, 255);
+        tmpColor.b = map(tmpColor.b, 0, 1, 0, 255);
+        stroke(tmpColor.r, tmpColor.g, tmpColor.b);
+    
+    } else if (colorSpace.value() == "LCH") {
+        var tmpColor = culori.rgb({mode: "lch",
+                                   l: color.x,
+                                   c: color.y,
+                                   h: color.z});
+        tmpColor.r = map(tmpColor.r, 0, 1, 0, 255);
+        tmpColor.g = map(tmpColor.g, 0, 1, 0, 255);
+        tmpColor.b = map(tmpColor.b, 0, 1, 0, 255);
+        stroke(tmpColor.r, tmpColor.g, tmpColor.b);
+    
+    } else if (colorSpace.value() == "LAB65") {
+        var tmpColor = culori.rgb({mode: "lab65",
+                                   l: color.x,
+                                   a: color.y,
+                                   b: color.z});
+        tmpColor.r = map(tmpColor.r, 0, 1, 0, 255);
+        tmpColor.g = map(tmpColor.g, 0, 1, 0, 255);
+        tmpColor.b = map(tmpColor.b, 0, 1, 0, 255);
+        stroke(tmpColor.r, tmpColor.g, tmpColor.b);
+    
+    } else if (colorSpace.value() == "LCH65") {
+        var tmpColor = culori.rgb({mode: "lch65",
+                                   l: color.x,
+                                   c: color.y,
+                                   h: color.z});
+        tmpColor.r = map(tmpColor.r, 0, 1, 0, 255);
+        tmpColor.g = map(tmpColor.g, 0, 1, 0, 255);
+        tmpColor.b = map(tmpColor.b, 0, 1, 0, 255);
+        stroke(tmpColor.r, tmpColor.g, tmpColor.b);
+    
+    } else if (colorSpace.value() == "RGB") {
         stroke(color.x, color.y, color.z);
     }
 }
@@ -321,8 +452,24 @@ function setup() {
     p2 = createVector(windowWidth * 5 / 6, windowHeight / 5);
     p3 = createVector(windowWidth * 4 / 5, windowHeight * 3 / 4)
 
-    oklabCheck = createCheckbox(" OkLab", true);
-    oklabCheck.position(20, 200);
+    colorSpace = createSelect();
+    colorSpace.position(20, 200);
+    colorSpace.option("RGB");
+    colorSpace.option("LRGB");
+    colorSpace.option("A98");
+    colorSpace.option("P3");
+    colorSpace.option("ProPhoto");
+    colorSpace.option("REC2020");
+    colorSpace.option("HSL");
+    colorSpace.option("HSV");
+    colorSpace.option("HSI");
+    colorSpace.option("HWB");
+    colorSpace.option("LAB");
+    colorSpace.option("LCH");
+    colorSpace.option("LAB65");
+    colorSpace.option("LCH65");
+    colorSpace.option("OkLab");
+    colorSpace.selected("RGB");
 
     slider = createSlider(0, 1, 0, 0.001);
     slider.position(20, 50);
@@ -355,20 +502,153 @@ function setup() {
 function draw() {
     background(54);
 
-    if (oklabCheck.checked()) {
-        color0OkLab = culori.oklab("#007BFF");
-        color0 = createVector(color0OkLab.l, color0OkLab.a, color0OkLab.b);
-        color1OkLab = culori.oklab("#28A745");
-        color1 = createVector(color1OkLab.l, color1OkLab.a, color1OkLab.b);
-        color2OkLab = culori.oklab("#DC3545");
-        color2 = createVector(color2OkLab.l, color2OkLab.a, color2OkLab.b);
-        color3OkLab = culori.oklab("#FFC107");
-        color3 = createVector(color3OkLab.l, color3OkLab.a, color3OkLab.b);
-    } else {
+    
+    if (colorSpace.value() == "RGB") {
         color0 = createVector(0, 123, 255);
         color1 = createVector(40, 167, 69);
         color2 = createVector(220, 53, 69);
         color3 = createVector(255, 193, 7);
+
+    } else if (colorSpace.value() == "LRGB") {
+        color0tmp = culori.lrgb("#007BFF");
+        color0 = createVector(color0tmp.r, color0tmp.g, color0tmp.b);
+        color1tmp = culori.lrgb("#28A745");
+        color1 = createVector(color1tmp.r, color1tmp.g, color1tmp.b);
+        color2tmp = culori.lrgb("#DC3545");
+        color2 = createVector(color2tmp.r, color2tmp.g, color2tmp.b);
+        color3tmp = culori.lrgb("#FFC107");
+        color3 = createVector(color3tmp.r, color3tmp.g, color3tmp.b);   
+
+    } else if (colorSpace.value() == "A98") {
+        color0tmp = culori.a98("#007BFF");
+        color0 = createVector(color0tmp.r, color0tmp.g, color0tmp.b);
+        color1tmp = culori.a98("#28A745");
+        color1 = createVector(color1tmp.r, color1tmp.g, color1tmp.b);
+        color2tmp = culori.a98("#DC3545");
+        color2 = createVector(color2tmp.r, color2tmp.g, color2tmp.b);
+        color3tmp = culori.a98("#FFC107");
+        color3 = createVector(color3tmp.r, color3tmp.g, color3tmp.b);     
+    
+    } else if (colorSpace.value() == "P3") {
+        color0tmp = culori.p3("#007BFF");
+        color0 = createVector(color0tmp.r, color0tmp.g, color0tmp.b);
+        color1tmp = culori.p3("#28A745");
+        color1 = createVector(color1tmp.r, color1tmp.g, color1tmp.b);
+        color2tmp = culori.p3("#DC3545");
+        color2 = createVector(color2tmp.r, color2tmp.g, color2tmp.b);
+        color3tmp = culori.p3("#FFC107");
+        color3 = createVector(color3tmp.r, color3tmp.g, color3tmp.b);     
+    
+    } else if (colorSpace.value() == "ProPhoto") {
+        color0tmp = culori.prophoto("#007BFF");
+        color0 = createVector(color0tmp.r, color0tmp.g, color0tmp.b);
+        color1tmp = culori.prophoto("#28A745");
+        color1 = createVector(color1tmp.r, color1tmp.g, color1tmp.b);
+        color2tmp = culori.prophoto("#DC3545");
+        color2 = createVector(color2tmp.r, color2tmp.g, color2tmp.b);
+        color3tmp = culori.prophoto("#FFC107");
+        color3 = createVector(color3tmp.r, color3tmp.g, color3tmp.b);   
+        
+    } else if (colorSpace.value() == "REC2020") {
+        color0tmp = culori.rec2020("#007BFF");
+        color0 = createVector(color0tmp.r, color0tmp.g, color0tmp.b);
+        color1tmp = culori.rec2020("#28A745");
+        color1 = createVector(color1tmp.r, color1tmp.g, color1tmp.b);
+        color2tmp = culori.rec2020("#DC3545");
+        color2 = createVector(color2tmp.r, color2tmp.g, color2tmp.b);
+        color3tmp = culori.rec2020("#FFC107");
+        color3 = createVector(color3tmp.r, color3tmp.g, color3tmp.b);   
+           
+    } else if (colorSpace.value() == "HSL") {
+        color0tmp = culori.hsl("#007BFF");
+        color0 = createVector(color0tmp.h, color0tmp.s, color0tmp.l);
+        color1tmp = culori.hsl("#28A745");
+        color1 = createVector(color1tmp.h, color1tmp.s, color1tmp.l);
+        color2tmp = culori.hsl("#DC3545");
+        color2 = createVector(color2tmp.h, color2tmp.s, color2tmp.l);
+        color3tmp = culori.hsl("#FFC107");
+        color3 = createVector(color3tmp.h, color3tmp.s, color3tmp.l);   
+    
+    } else if (colorSpace.value() == "HSV") {
+        color0tmp = culori.hsv("#007BFF");
+        color0 = createVector(color0tmp.h, color0tmp.s, color0tmp.v);
+        color1tmp = culori.hsv("#28A745");
+        color1 = createVector(color1tmp.h, color1tmp.s, color1tmp.v);
+        color2tmp = culori.hsv("#DC3545");
+        color2 = createVector(color2tmp.h, color2tmp.s, color2tmp.v);
+        color3tmp = culori.hsv("#FFC107");
+        color3 = createVector(color3tmp.h, color3tmp.s, color3tmp.v);  
+
+    } else if (colorSpace.value() == "HSI") {
+        color0tmp = culori.hsi("#007BFF");
+        color0 = createVector(color0tmp.h, color0tmp.s, color0tmp.i);
+        color1tmp = culori.hsi("#28A745");
+        color1 = createVector(color1tmp.h, color1tmp.s, color1tmp.i);
+        color2tmp = culori.hsi("#DC3545");
+        color2 = createVector(color2tmp.h, color2tmp.s, color2tmp.i);
+        color3tmp = culori.hsi("#FFC107");
+        color3 = createVector(color3tmp.h, color3tmp.s, color3tmp.i);  
+
+    } else if (colorSpace.value() == "HWB") {
+        color0tmp = culori.hwb("#007BFF");
+        color0 = createVector(color0tmp.h, color0tmp.w, color0tmp.b);
+        color1tmp = culori.hwb("#28A745");
+        color1 = createVector(color1tmp.h, color1tmp.w, color1tmp.b);
+        color2tmp = culori.hwb("#DC3545");
+        color2 = createVector(color2tmp.h, color2tmp.w, color2tmp.b);
+        color3tmp = culori.hwb("#FFC107");
+        color3 = createVector(color3tmp.h, color3tmp.w, color3tmp.b);  
+
+    } else if (colorSpace.value() == "LAB") {
+        color0tmp = culori.lab("#007BFF");
+        color0 = createVector(color0tmp.l, color0tmp.a, color0tmp.b);
+        color1tmp = culori.lab("#28A745");
+        color1 = createVector(color1tmp.l, color1tmp.a, color1tmp.b);
+        color2tmp = culori.lab("#DC3545");
+        color2 = createVector(color2tmp.l, color2tmp.a, color2tmp.b);
+        color3tmp = culori.lab("#FFC107");
+        color3 = createVector(color3tmp.l, color3tmp.a, color3tmp.b);  
+
+    } else if (colorSpace.value() == "LCH") {
+        color0tmp = culori.lch("#007BFF");
+        color0 = createVector(color0tmp.l, color0tmp.c, color0tmp.h);
+        color1tmp = culori.lch("#28A745");
+        color1 = createVector(color1tmp.l, color1tmp.c, color1tmp.h);
+        color2tmp = culori.lch("#DC3545");
+        color2 = createVector(color2tmp.l, color2tmp.c, color2tmp.h);
+        color3tmp = culori.lch("#FFC107");
+        color3 = createVector(color3tmp.l, color3tmp.c, color3tmp.h); 
+        
+    } else if (colorSpace.value() == "LAB65") {
+        color0tmp = culori.lab65("#007BFF");
+        color0 = createVector(color0tmp.l, color0tmp.a, color0tmp.b);
+        color1tmp = culori.lab65("#28A745");
+        color1 = createVector(color1tmp.l, color1tmp.a, color1tmp.b);
+        color2tmp = culori.lab65("#DC3545");
+        color2 = createVector(color2tmp.l, color2tmp.a, color2tmp.b);
+        color3tmp = culori.lab65("#FFC107");
+        color3 = createVector(color3tmp.l, color3tmp.a, color3tmp.b); 
+
+    } else if (colorSpace.value() == "LCH65") {
+        color0tmp = culori.lch65("#007BFF");
+        color0 = createVector(color0tmp.l, color0tmp.c, color0tmp.h);
+        color1tmp = culori.lch65("#28A745");
+        color1 = createVector(color1tmp.l, color1tmp.c, color1tmp.h);
+        color2tmp = culori.lch65("#DC3545");
+        color2 = createVector(color2tmp.l, color2tmp.c, color2tmp.h);
+        color3tmp = culori.lch65("#FFC107");
+        color3 = createVector(color3tmp.l, color3tmp.c, color3tmp.h); 
+        
+    } else if (colorSpace.value() == "OkLab") {
+        color0tmp = culori.oklab("#007BFF");
+        color0 = createVector(color0tmp.l, color0tmp.a, color0tmp.b);
+        color1tmp = culori.oklab("#28A745");
+        color1 = createVector(color1tmp.l, color1tmp.a, color1tmp.b);
+        color2tmp = culori.oklab("#DC3545");
+        color2 = createVector(color2tmp.l, color2tmp.a, color2tmp.b);
+        color3tmp = culori.oklab("#FFC107");
+        color3 = createVector(color3tmp.l, color3tmp.a, color3tmp.b);
+
     }
 
     if (hideUI.checked()) {
@@ -377,14 +657,14 @@ function draw() {
         drawConstructionLines.hide();
         drawConstructionPoints.hide();
         drawControlPoints.hide();
-        oklabCheck.hide();
+        colorSpace.hide();
     } else {
         slider.show();
         select.show();
         drawConstructionLines.show();
         drawConstructionPoints.show();
         drawControlPoints.show();
-        oklabCheck.show();
+        colorSpace.show();
     }
 
     let t = slider.value();
