@@ -4,6 +4,7 @@ let drawConstructionLines;
 let drawConstructionPoints;
 let drawControlPoints;
 let hideUI;
+let oklabCheck;
 let p0, p1, p2, p3;
 let color0, color1, color2, color3;
 let move0WithMouse;
@@ -48,6 +49,21 @@ function mouseReleased() {
     moveControl1WithMouse = false;
 }
 
+function setColor(color) {
+    if (oklabCheck.checked()) {
+        var tmpColor = culori.rgb({mode: "oklab",
+                                   l: color.x,
+                                   a: color.y,
+                                   b: color.z});
+        tmpColor.r = map(tmpColor.r, 0, 1, 0, 255);
+        tmpColor.g = map(tmpColor.g, 0, 1, 0, 255);
+        tmpColor.b = map(tmpColor.b, 0, 1, 0, 255);
+        stroke(tmpColor.r, tmpColor.g, tmpColor.b);
+    } else {
+        stroke(color.x, color.y, color.z);
+    }
+}
+
 function drawQuadraticBezierCurve(t) {
     noFill();
     strokeWeight(2);
@@ -58,20 +74,22 @@ function drawQuadraticBezierCurve(t) {
         line(p1.x, p1.y, p2.x, p2.y);
 
         strokeWeight(10);
-        stroke(color1.x, color1.y, color1.z);
+        setColor(color1);
         point(p1.x, p1.y);
         strokeWeight(2);
         circle(p1.x, p1.y, 18);
     }
     
     strokeWeight(10);
-    stroke(color0.x, color0.y, color0.z);
+    setColor(color0);
+    // stroke(color0.x, color0.y, color0.z);
     point(p0.x, p0.y);
     strokeWeight(2);
     circle(p0.x, p0.y, 18);
 
     strokeWeight(10);
-    stroke(color2.x, color2.y, color2.z);
+    setColor(color2);
+    // stroke(color2.x, color2.y, color2.z);
     point(p2.x, p2.y);
     strokeWeight(2);
     circle(p2.x, p2.y, 18);
@@ -94,15 +112,18 @@ function drawQuadraticBezierCurve(t) {
     if (drawConstructionPoints.checked()) {
         strokeWeight(15);
 
-        stroke(colorLerpP0.x, colorLerpP0.y, colorLerpP0.z);
+        setColor(colorLerpP0);
+        // stroke(colorLerpP0.x, colorLerpP0.y, colorLerpP0.z);
         point(lerpP0.x, lerpP0.y);
 
-        stroke(colorLerpP1.x, colorLerpP1.y, colorLerpP1.z);
+
+        setColor(colorLerpP1);
+        // stroke(colorLerpP1.x, colorLerpP1.y, colorLerpP1.z);
         point(lerpP1.x, lerpP1.y);
 
         strokeWeight(20);
-
-        stroke(colorBezierP.x, colorBezierP.y, colorBezierP.z);
+        setColor(colorBezierP);
+        // stroke(colorBezierP.x, colorBezierP.y, colorBezierP.z);
         point(bezierP.x, bezierP.y);
     }
     
@@ -120,7 +141,8 @@ function drawQuadraticBezierCurve(t) {
 
         let hue = lerp3D(hue0, hue1, i);
 
-        stroke(hue.x, hue.y, hue.z);
+        setColor(hue);
+        // stroke(hue.x, hue.y, hue.z);
         
         if (i == 0) {
             line(p0.x, p0.y, bezier.x, bezier.y);
@@ -142,26 +164,26 @@ function drawCubicBezierCurve(t) {
         line(p2.x, p2.y, p3.x, p3.y);
 
         strokeWeight(10);
-        stroke(color1.x, color1.y, color1.z);
+        setColor(color1);
         point(p1.x, p1.y);
         strokeWeight(2);
         circle(p1.x, p1.y, 18);
 
         strokeWeight(10);
-        stroke(color3.x, color3.y, color3.z);
+        setColor(color3);
         point(p3.x, p3.y);
         strokeWeight(2);
         circle(p3.x, p3.y, 18);
     }
     
     strokeWeight(10);
-    stroke(color0.x, color0.y, color0.z);
+    setColor(color0);
     point(p0.x, p0.y);
     strokeWeight(2);
     circle(p0.x, p0.y, 18);
 
     strokeWeight(10);
-    stroke(color2.x, color2.y, color2.z);
+    setColor(color2);
     point(p2.x, p2.y);
     strokeWeight(2);
     circle(p2.x, p2.y, 18);
@@ -186,13 +208,13 @@ function drawCubicBezierCurve(t) {
     if (drawConstructionPoints.checked()) {
         strokeWeight(15);
 
-        stroke(colorLerpP0.x, colorLerpP0.y, colorLerpP0.z);
+        setColor(colorLerpP0);
         point(lerpP0.x, lerpP0.y);
 
-        stroke(colorLerpP2.x, colorLerpP2.y, colorLerpP2.z);
+        setColor(colorLerpP2);
         point(lerpP2.x, lerpP2.y);
 
-        stroke(colorLerpP3.x, colorLerpP3.y, colorLerpP3.z);
+        setColor(colorLerpP3);
         point(lerpP3.x, lerpP3.y);
     }
 
@@ -211,10 +233,10 @@ function drawCubicBezierCurve(t) {
     if (drawConstructionPoints.checked()) {
         strokeWeight(20);
 
-        stroke(colorLerp2P0.x, colorLerp2P0.y, colorLerp2P0.z);
+        setColor(colorLerp2P0);
         point(lerp2P0.x, lerp2P0.y);
 
-        stroke(colorLerp2P1.x, colorLerp2P1.y, colorLerp2P1.z);
+        setColor(colorLerp2P1);
         point(lerp2P1.x, lerp2P1.y);
     }
     
@@ -223,7 +245,7 @@ function drawCubicBezierCurve(t) {
 
     if (drawConstructionPoints.checked()) {
         strokeWeight(25);
-        stroke(colorBezier.x, colorBezier.y, colorBezier.z);
+        setColor(colorBezier);
         point(bezierP.x, bezierP.y);
     }
     
@@ -249,7 +271,7 @@ function drawCubicBezierCurve(t) {
         let bezier = lerp2D(pointB1, pointB2, i);
         let hue = lerp3D(hueB1, hueB2, i);
 
-        stroke(hue.x, hue.y, hue.z);
+        setColor(hue);
         
         if (i == 0) {
             line(p0.x, p0.y, bezier.x, bezier.y);
@@ -299,10 +321,8 @@ function setup() {
     p2 = createVector(windowWidth * 5 / 6, windowHeight / 5);
     p3 = createVector(windowWidth * 4 / 5, windowHeight * 3 / 4)
 
-    color0 = createVector(0, 123, 255);
-    color1 = createVector(40, 167, 69);
-    color2 = createVector(220, 53, 69);
-    color3 = createVector(255, 193, 7);
+    oklabCheck = createCheckbox(" OkLab", true);
+    oklabCheck.position(20, 200);
 
     slider = createSlider(0, 1, 0, 0.001);
     slider.position(20, 50);
@@ -323,7 +343,7 @@ function setup() {
 
     hideUI = createCheckbox(" Hide UI", false);
     hideUI.position(20, 20);
-    
+
     drawQuadratic = true;
 
     move0WithMouse = false;
@@ -334,6 +354,22 @@ function setup() {
 
 function draw() {
     background(54);
+
+    if (oklabCheck.checked()) {
+        color0OkLab = culori.oklab("#007BFF");
+        color0 = createVector(color0OkLab.l, color0OkLab.a, color0OkLab.b);
+        color1OkLab = culori.oklab("#28A745");
+        color1 = createVector(color1OkLab.l, color1OkLab.a, color1OkLab.b);
+        color2OkLab = culori.oklab("#DC3545");
+        color2 = createVector(color2OkLab.l, color2OkLab.a, color2OkLab.b);
+        color3OkLab = culori.oklab("#FFC107");
+        color3 = createVector(color3OkLab.l, color3OkLab.a, color3OkLab.b);
+    } else {
+        color0 = createVector(0, 123, 255);
+        color1 = createVector(40, 167, 69);
+        color2 = createVector(220, 53, 69);
+        color3 = createVector(255, 193, 7);
+    }
 
     if (hideUI.checked()) {
         slider.hide();
